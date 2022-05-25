@@ -13,6 +13,7 @@ p.s.: l’uso delle frecce da tastiera può portare delle complicazioni legate  
 const myApp = new Vue({
     el: "#app",
     data: {
+        autoSlider: "",
         slideActive : 0,
         slides : [
             {
@@ -43,12 +44,12 @@ const myApp = new Vue({
         ]
     },
     created(){
-        autoSlider = setInterval(()=> {
+        this.autoSlider = setInterval(()=> {
             this.slideActive ++;
             if (this.slideActive > this.slides.length - 1){
                 this.slideActive = 0;
             }
-        }, 3000)
+        }, 1000)
     },
     methods : {
         next(){
@@ -62,6 +63,17 @@ const myApp = new Vue({
             if (this.slideActive < 0){
                 this.slideActive = this.slides.length - 1;
             }
+        },
+        startAutoSlider(){
+            this.autoSlider = setInterval(()=> {
+                this.slideActive ++;
+                if (this.slideActive > this.slides.length - 1){
+                    this.slideActive = 0;
+                }
+            }, 1000)
+        },
+        stopAutoSlider(){
+            clearInterval(this.autoSlider)
         }
     }
 });
