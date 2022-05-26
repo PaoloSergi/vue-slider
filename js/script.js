@@ -44,7 +44,7 @@ const myApp = new Vue({
         ]
     },
     created(){
-        this.autoSlider = setInterval(this.next, 1000)
+        this.startAutoSlider();
     },
     methods : {
         next(){
@@ -60,10 +60,13 @@ const myApp = new Vue({
             }
         },
         startAutoSlider(){
-            this.autoSlider = setInterval(this.next, 1000)
+            this.autoSlider = setInterval(this.next, 1000);
         },
         stopAutoSlider(){
-            clearInterval(this.autoSlider)
+            clearInterval(this.autoSlider);
+        },
+        selectThumb(thumbIndex){
+            this.slideActive = thumbIndex;
         }
     }
 });
