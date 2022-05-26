@@ -44,12 +44,7 @@ const myApp = new Vue({
         ]
     },
     created(){
-        this.autoSlider = setInterval(()=> {
-            this.slideActive ++;
-            if (this.slideActive > this.slides.length - 1){
-                this.slideActive = 0;
-            }
-        }, 1000)
+        this.autoSlider = setInterval(this.next, 1000)
     },
     methods : {
         next(){
@@ -65,12 +60,7 @@ const myApp = new Vue({
             }
         },
         startAutoSlider(){
-            this.autoSlider = setInterval(()=> {
-                this.slideActive ++;
-                if (this.slideActive > this.slides.length - 1){
-                    this.slideActive = 0;
-                }
-            }, 1000)
+            this.autoSlider = setInterval(this.next, 1000)
         },
         stopAutoSlider(){
             clearInterval(this.autoSlider)
